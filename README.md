@@ -2,18 +2,9 @@
 # 通用工具
 
 ## git
-分布式版本控制平台
-- 初始化仓库： git init 
-- 添加文件： git add <文件>  或  git add . （全部添加）
-- 提交更改： git commit -m "提交说明" 
-- 分支管理： git branch <分支名> （创建）， git checkout <分支名> （切换）
-- 远程同步： git remote add origin <仓库URL> ， git push -u origin <分支> 
+
 ## docker
-容器化平台
-- 拉取镜像： docker pull <镜像名> （如  docker pull ubuntu ）
-- 运行容器： docker run -it <镜像名> （交互式）， docker run -d <镜像名> （后台运行）
-- 管理容器： docker ps （查看运行中）， docker stop <容器ID> （停止）， docker rm <容器ID> （删除）
-- 构建镜像：编写  Dockerfile  后， docker build -t <镜像名> 
+
 ## GDB
 调试工具
 - 启动调试： gdb <可执行程序> 
@@ -22,10 +13,6 @@
 - 查看信息： print <变量> （查看值）， backtrace （查看堆栈）
 
 ## IDA Pro
-逆向工程工具
-- 加载文件：拖入二进制文件（.exe、.so等），IDA自动分析。
-- 反汇编视图：查看  IDA View  窗口， F5 （需Hex-Rays插件）生成伪代码。
-- 代码分析：使用交叉引用（ X  键）、重命名符号（ N  键）优化可读性，利用插件（如反混淆）扩展功能。
 
 ## Wireshark
 网络协议分析工具
