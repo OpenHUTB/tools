@@ -5,9 +5,15 @@
  
 Git 是分布式版本控制系统，工作目录、暂存区、本地仓库是核心区域。工作目录存放项目文件，文件有未跟踪、已修改状态；暂存区临时存放待提交修改；本地仓库存储版本历史，记录提交、分支等信息 。通过  git add  关联工作目录与暂存区， git commit  关联暂存区与本地仓库，实现版本管理
 
-## docker
-Docker 中，镜像（Image）是只读模板，包含运行程序的环境与代码；容器（Container）是镜像运行实例，可启动、停止、删除；仓库（Repository）存储镜像，分公共（如 Docker Hub ）、私有 。通过  docker pull  拉取镜像， docker run  基于镜像创建容器， docker push  推送镜像到仓库，实现应用打包、分发、运行 。
+
+## docker  
+Docker 中，镜像（Image）可看作 “带运行环境的二进制包”，若镜像运行异常，可像逆向分析程序一样：用 ‘docker export’ 导出容器文件系统，拖进 IDA Pro 分析二进制依赖；容器（Container）是**“动态调试沙箱”，启动时加 ‘--cap-add=SYS_PTRACE’ ，就能用 GDB  attach 进容器进程（比如调试加密程序的内存行为）；仓库（Repository）存储的镜像，可通过 ‘docker save`’导出后，用 Binwalk 拆解镜像层 ，逆向工程师能快速定位“恶意镜像藏了什么脚本”。  
+
+实战里，‘docker pull’下载可疑镜像后，先在隔离环境 ‘docker run’，结合 Wireshark 抓容器网络包（看是否外联恶意地址）；分析完用 ‘docker rmi’ 彻底删除，这种 “Docker + 逆向工具链” 的组合 ，让镜像安全审计更高效，也让 Docker 不止于部署，成为逆向分析的 “动态靶场” 。  
+
+
 ## GDB
+
 
 ## IDA Pro
 IDA Pro 是逆向工程核心工具，融合静态分析与动态调试。静态分析通过 Hex View（原始字节码）、Disassembly View（反汇编代码）、Graph View（函数控制流图）解析二进制文件，F5 生成伪 C 代码辅助逻辑理解，交叉引用（X 键）追踪函数调用与数据流向；符号识别（N 键重命名）提升代码可读性。动态调试依托 Remote Linux/Windows Debugger，F2 设断点、Run to cursor 控制执行，结合 Registers（寄存器）、Memory（内存）、Stack（栈）窗口分析运行状态，Patch Program 可修改二进制绕过反调试。综合运用 Flirt 技术（识别库函数）、Decompiler 插件（还原混淆代码），完整还原程序逻辑，支撑安全分析。
