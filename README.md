@@ -3,16 +3,16 @@
 
 ## git
 
-<<<<<<< HEAD
+
 ## docker
-=======
+
 
 ## docker  
 Docker 中，镜像（Image）可看作 “带运行环境的二进制包”，若镜像运行异常，可像逆向分析程序一样：用 ‘docker export’ 导出容器文件系统，拖进 IDA Pro 分析二进制依赖；容器（Container）是**“动态调试沙箱”，启动时加 ‘--cap-add=SYS_PTRACE’ ，就能用 GDB  attach 进容器进程（比如调试加密程序的内存行为）；仓库（Repository）存储的镜像，可通过 ‘docker save`’导出后，用 Binwalk 拆解镜像层 ，逆向工程师能快速定位“恶意镜像藏了什么脚本”。  
 
 实战里，‘docker pull’下载可疑镜像后，先在隔离环境 ‘docker run’，结合 Wireshark 抓容器网络包（看是否外联恶意地址）；分析完用 ‘docker rmi’ 彻底删除，这种 “Docker + 逆向工具链” 的组合 ，让镜像安全审计更高效，也让 Docker 不止于部署，成为逆向分析的 “动态靶场” 。  
 
->>>>>>> fb791bdc1574136ad55fc57112beaa2e760b71c0
+
 
 ## GDB
 调试工具
